@@ -1,0 +1,28 @@
+import casa.*
+
+describe "La casa" {
+	
+	test "caso de prueba" {
+		casaDePepeYJulian.romper(1000)
+		assert.equals(true, casaDePepeYJulian.viveresSuficientes())
+		assert.equals(true, casaDePepeYJulian.hayQueHacerReparaciones())
+		assert.equals(false, casaDePepeYJulian.estaLaCasaEnOrden())
+	}
+	
+	test "viveres suficientes falso con 20%" {
+		casaDePepeYJulian.viveres(20)
+		assert.equals(false, casaDePepeYJulian.viveresSuficientes())
+	}
+	
+	test "si funciona reparar()" {
+		casaDePepeYJulian.romper(1000)
+		assert.equals(true, casaDePepeYJulian.viveresSuficientes())
+		assert.equals(true, casaDePepeYJulian.hayQueHacerReparaciones())
+		assert.equals(false, casaDePepeYJulian.estaLaCasaEnOrden())
+		casaDePepeYJulian.reparar()
+		assert.equals(false, casaDePepeYJulian.hayQueHacerReparaciones())
+		assert.equals(true, casaDePepeYJulian.estaLaCasaEnOrden())
+		assert.equals(0, casaDePepeYJulian.montoReparaciones())
+	}
+	
+}
