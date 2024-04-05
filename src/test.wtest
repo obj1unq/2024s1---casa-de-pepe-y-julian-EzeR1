@@ -14,16 +14,6 @@ describe "La casa" {
 		assert.equals(false, casaDePepeYJulian.viveresSuficientes())
 	}
 
-//	test "si funciona reparar()" {
-//		casaDePepeYJulian.romper(1000)
-//		assert.equals(true, casaDePepeYJulian.viveresSuficientes())
-//		assert.equals(true, casaDePepeYJulian.hayQueHacerReparaciones())
-//		assert.equals(false, casaDePepeYJulian.estaLaCasaEnOrden())
-//		casaDePepeYJulian.reparar()
-//		assert.equals(false, casaDePepeYJulian.hayQueHacerReparaciones())
-//		assert.equals(true, casaDePepeYJulian.estaLaCasaEnOrden())
-//		assert.equals(0, casaDePepeYJulian.montoReparaciones())
-//	}
 
 	test "cuenta con gastos, costo por operacion de 20 pesos y deposito 1000 en una cuenta vacia" {
 		gastos.costoPorOperacion(20)
@@ -55,6 +45,18 @@ describe "La casa" {
 		casaDePepeYJulian.gastar(700)
 		assert.equals(300, corriente.saldo())
 		
+	}
+	
+	test "manteniendo la casa" {
+		casaDePepeYJulian.viveres(50)
+		casaDePepeYJulian.romper(100)
+		casaDePepeYJulian.cuentaBancaria(corriente)
+		casaDePepeYJulian.depositarEnCuentaBancaria(1000)
+		casaDePepeYJulian.estrategiaDeAhorro(full)
+		casaDePepeYJulian.hacerMantenimientoDeLaCasa()
+		assert.equals(90, casaDePepeYJulian.viveres())
+		assert.equals(100, casaDePepeYJulian.montoReparaciones())
+		assert.equals(800, casaDePepeYJulian.saldoDisponibleEnCuentaBancaria())
 	}
 
 }
